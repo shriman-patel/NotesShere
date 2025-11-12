@@ -1,0 +1,257 @@
+/* ===== Global Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* Poppins Font को माना गया है, यदि उपलब्ध न हो तो Arial/Sans-serif का उपयोग होगा */
+  font-family: "Poppins", Arial, sans-serif;
+}
+
+/* ===== Body ===== */
+body {
+  background: #fff6f0; /* light peach-pink background */
+  color: #333;
+  line-height: 1.6;
+}
+
+/* ===== Header ===== */
+header {
+  /* peach to soft pink gradient */
+  background: linear-gradient(135deg, #ffe5b4, #ffc4c4); 
+  color: #333;
+  padding: 20px 0;
+  text-align: center;
+  border-bottom: 2px solid #f8d7da;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+header h1 {
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+}
+
+/* ===== Navigation Bar ===== */
+nav {
+  margin-top: 10px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #444;
+  background: #fff;
+  padding: 8px 15px;
+  margin: 0 5px;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 1px solid #f4cccc;
+}
+
+nav a:hover,
+nav a.active {
+  background: #ffb6b9;
+  color: #fff;
+  border-color: #ff9a9e;
+}
+
+/* ===== Main Content (Wrapper) ===== */
+main {
+  width: 85%;
+  max-width: 1000px;
+  margin: 30px auto;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(255, 182, 185, 0.2);
+}
+
+/* ===== Section Titles ===== */
+h2 {
+  color: #ff758f;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #ffb6b9;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+/* ===== Upload Section & Feedback Section Common Styles ===== */
+.upload-section form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.upload-section input,
+.upload-section select,
+.upload-section textarea { /* Feedback form के लिए textarea जोड़ा गया */
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #f8c8dc;
+  font-size: 1rem;
+  background: #fff8f8;
+}
+.upload-section select {
+  color: black; 
+}
+
+.upload-section button {
+  padding: 10px;
+  background-color: #ff9a9e;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.upload-section input[type="text"] {
+  color: rgb(12, 0, 0); 
+}
+.upload-section button:hover {
+  background-color: #ff7b89;
+}
+
+/* ===== Search & Filter Section ===== */
+.search-filter {
+  margin-top: 40px;
+  background: #ffeef2;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #ffd1dc;
+  /* Flexbox for better alignment of search/filter elements */
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 10px;
+  align-items: center;
+}
+
+.search-filter h2 {
+    width: 100%; /* Ensure H2 takes full width */
+    margin-bottom: 15px;
+}
+
+.search-filter input,
+.search-filter select {
+  flex-grow: 1; /* Allow input/select to take available space */
+  min-width: 200px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #f8c8dc;
+}
+
+.search-filter button {
+    /* Search button style */
+    background: #ffb6b9;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+
+.search-filter button:hover {
+  background: #ff7b89;
+}
+
+
+/* ===== Notes Section ===== */
+.notes-section {
+  margin-top: 40px;
+}
+
+.notes-container {
+  display: grid;
+  /* Grid layout for note cards */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.note-card {
+  background: #ffffff;
+  border: 1px solid #ffd1dc;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 2px 8px rgba(255, 182, 185, 0.2);
+  transition: transform 0.3s;
+}
+
+.note-card:hover {
+  transform: translateY(-5px);
+}
+
+.note-card h3 {
+  color: #ff758f;
+  margin-bottom: 10px;
+}
+
+.note-actions {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.preview-btn,
+.download-btn {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: 0.3s;
+}
+
+.preview-btn {
+  background: #f7aef8;
+  color: white;
+}
+
+.preview-btn:hover {
+  background: #e86aa6;
+}
+
+.download-btn {
+  background: #ffb6b9;
+  color: white;
+}
+
+.download-btn:hover {
+  background: #ff7b89;
+}
+
+/* ===== Feedback Page Specific Form Styling ===== */
+/* Note: Since the feedback form shares the 'upload-section' class, 
+   we primarily use that styling, but we can refine the container if needed. */
+#feedbackForm {
+    /* Override width/margin for centering */
+    width: 100%;
+    max-width: 500px;
+    margin: 30px auto; 
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(255, 182, 185, 0.25);
+}
+
+#feedbackForm label {
+    font-weight: 600;
+    color: #444;
+}
+
+#response {
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+
+/* ===== Footer ===== */
+footer {
+  margin-top: 40px;
+  background: #ffe5ec;
+  color: #333;
+  text-align: center;
+  padding: 15px;
+  font-size: 0.9rem;
+  border-top: 2px solid #ffd1dc;
+}
