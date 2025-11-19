@@ -23,7 +23,7 @@ app.use(express.urlencoded({ extended: true })); // Form data handling
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Database Connection (MongoDB)
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/studynotesdb';
+const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://shrimanp305_db_user:shrimanpatel@cluster0.setmou6.mongodb.net/?appName=Cluster0';
 mongoose.connect(MONGO_URI)
     .then(() => console.log('✅ MongoDB Connected Successfully!'))
     .catch(err => console.error('❌ MongoDB connection error:', err));
