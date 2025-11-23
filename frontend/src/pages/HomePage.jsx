@@ -35,6 +35,12 @@ const HomePage = () => {
         fetchNotes();
     }, [fetchNotes]);
 
+    const handleNoteDeleteSuccess = (deletedNoteId) => {
+        // notes राज्य से उस नोट को फ़िल्टर करके हटा दें जिसकी ID deletedNoteId है
+        setNotes(prevNotes => prevNotes.filter(note => note._id !== deletedNoteId));
+        alert('नोट सफलतापूर्वक डिलीट हो गया!');
+    };
+
     return (
         <>
             <NoteUploadForm onNoteUploadSuccess={fetchNotes} />
@@ -70,7 +76,11 @@ const HomePage = () => {
                         <p style={{ width: '100%', textAlign: 'center' }}>Loading notes...</p>
                     ) : notes.length > 0 ? (
                         notes.map(note => (
-                            <NoteCard key={note._id} note={note} />
+                            <NoteCard
+                             key={note._id} 
+                             note={note}
+                             onDeleteSuccess={handleNoteDeleteSuccess}
+                             />
                         ))
                     ) : (
                         <p style={{ width: '100%', textAlign: 'center' }}>

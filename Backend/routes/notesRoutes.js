@@ -1,6 +1,8 @@
 const express = require('express');
 const Note = require('../models/NoteModel');
 const upload = require('../middleware/upload'); // Multer middleware import
+const fs = require('fs');
+const path = require('path');
 
 const router = express.Router();
 
@@ -57,5 +59,39 @@ router.get('/', async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
+
+// DELETE /api/notes/:id:
+router.delete('/:id', async (req, res) => {
+
+   
+    try {
+        const noteId = req.params.id;
+         console.log("Attempting to delete ID:", noteId);
+        // 1. DB से नोट को ढूंढें और हटाएँ (यह हमें deletedNote वापस देता है)
+        const deletedNote = await Note.findByIdAndDelete(noteId);
+ 
+        if (!deletedNote) {
+            return res.status(404).json({ error: 'Note not found.' });
+        }
+        
+        
+        const filePath = deletedNote.filePath; 
+
+        fs.unlink(filePath, (err) => {
+            if (err) {
+                console.error(`Error deleting file from system: ${filePath}`, err);
+            } else {
+                console.log(`Successfully deleted file: ${filePath}`);
+            }
+        });
+        
+        res.status(200).json({ message: 'Note deleted successfully!', note: deletedNote });
+    } catch (error) {
+        console.error("Error deleting note:", error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+
 
 module.exports = router;
